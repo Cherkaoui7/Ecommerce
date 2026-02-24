@@ -41,6 +41,7 @@ interface Props {
 }
 
 export default function ReviewSection({ productId }: Props) {
+  const localOnlyMode = !import.meta.env.VITE_API_URL;
   const { user } = useAuth();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
@@ -53,6 +54,13 @@ export default function ReviewSection({ productId }: Props) {
   });
 
   const fetchReviews = useCallback(async () => {
+    if (localOnlyMode) {
+      setReviews([]);
+      setStats(null);
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await httpClient.get<ReviewApiResponse>(`/products/${productId}/reviews`);
       // response.data = { success, data: <paginator>, stats }
@@ -65,12 +73,13 @@ export default function ReviewSection({ productId }: Props) {
       }));
       setReviews(mapped);
       setStats(response.data?.stats ?? null);
-    } catch (error) {
-      console.error('Erreur lors du chargement des avis:', error);
+    } catch {
+      setReviews([]);
+      setStats(null);
     } finally {
       setLoading(false);
     }
-  }, [productId]);
+  }, [localOnlyMode, productId]);
 
   useEffect(() => {
     fetchReviews();
@@ -78,6 +87,10 @@ export default function ReviewSection({ productId }: Props) {
 
   const submitReview = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (localOnlyMode) {
+      alert('Les avis ne sont pas disponibles en mode frontend-only.');
+      return;
+    }
     try {
       await httpClient.post('/reviews', {
         product_id: productId,
@@ -93,11 +106,14 @@ export default function ReviewSection({ productId }: Props) {
   };
 
   const markHelpful = async (reviewId: number) => {
+    if (localOnlyMode) {
+      return;
+    }
     try {
       await httpClient.post(`/products/${productId}/reviews/${reviewId}/helpful`);
       fetchReviews();
-    } catch (error) {
-      console.error('Erreur:', error);
+    } catch {
+      // Ignore optimistic action failures in UI.
     }
   };
 
