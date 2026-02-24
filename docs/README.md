@@ -90,6 +90,7 @@ URL frontend par defaut : `http://localhost:5173`
 ## 5. Comptes demo locaux
 
 Quand les utilisateurs demo sont seedes :
+      *** Demo credentials are for local learning only ***
 
 - Admin : `admin@ecommerce.com` / `admin123`
 - Client : `john@example.com` / `CustomerDemo!2026`
