@@ -75,8 +75,8 @@ const writeLocalUsers = (users: LocalStoredUser[]) => {
 };
 
 const toPublicUser = (user: LocalStoredUser): User => {
-    const publicUser = { ...user };
-    delete publicUser.password;
+    const { password, ...publicUser } = user;
+    void password;
     return publicUser;
 };
 
