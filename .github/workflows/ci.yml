@@ -46,6 +46,13 @@ jobs:
           extensions: mbstring, pdo_sqlite, sqlite3, bcmath, dom, fileinfo
           coverage: none
 
+      - name: Prepare Laravel runtime directories
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/{cache,sessions,testing,views}
+          mkdir -p storage/logs
+          chmod -R 777 bootstrap/cache storage
+
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
@@ -81,6 +88,13 @@ jobs:
           php-version: '8.4'
           extensions: mbstring, pdo_sqlite, sqlite3, bcmath, dom, fileinfo
           coverage: none
+
+      - name: Prepare Laravel runtime directories
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/{cache,sessions,testing,views}
+          mkdir -p storage/logs
+          chmod -R 777 bootstrap/cache storage
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
