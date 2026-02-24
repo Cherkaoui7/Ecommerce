@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Category } from '../types';
-import httpClient from '../api/httpClient';
+import { fetchCategories } from '../features/categories/categoryApi';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 // Fallback images and descriptions per category name
@@ -42,8 +42,8 @@ export default function CategoriesPage() {
     useEffect(() => {
         const load = async () => {
             try {
-                const res = await httpClient.get<{ success: boolean; data: Category[] }>('/categories');
-                setCategories(res.data.data);
+                const res = await fetchCategories();
+                setCategories(res.data);
             } catch {
                 setError('Impossible de charger les catégories. Veuillez réessayer.');
             } finally {

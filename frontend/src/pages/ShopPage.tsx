@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Product, Category } from '../types';
 import { fetchProducts } from '../features/products/productApi';
+import { fetchCategories } from '../features/categories/categoryApi';
 import ProductCard from '../components/ui/ProductCard';
-import httpClient from '../api/httpClient';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { ProductCardSkeleton } from '../components/ui/SkeletonLoader';
 import { getApiErrorMessage } from '../utils/apiError';
@@ -21,10 +21,10 @@ export default function ShopPage() {
             try {
                 const [productsRes, categoriesRes] = await Promise.all([
                     fetchProducts(1, selectedCategory),
-                    httpClient.get<{ success: boolean; data: Category[] }>('/categories')
+                    fetchCategories()
                 ]);
                 setProducts(productsRes.data.data);
-                setCategories(categoriesRes.data.data);
+                setCategories(categoriesRes.data);
             } catch (err: unknown) {
                 setError(getApiErrorMessage(err, 'Erreur lors du chargement des données.'));
             } finally {
