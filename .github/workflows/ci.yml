@@ -42,7 +42,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
           extensions: mbstring, pdo_sqlite, sqlite3, bcmath, dom, fileinfo
           coverage: none
 
@@ -52,9 +52,17 @@ jobs:
       - name: Prepare app key
         run: |
           cp .env.example .env
+          php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
           php artisan key:generate
 
       - name: Run backend test suite
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+          CACHE_STORE: array
+          SESSION_DRIVER: array
+          QUEUE_CONNECTION: sync
         run: php artisan test --no-ansi
 
   smoke-flow:
@@ -70,7 +78,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
           extensions: mbstring, pdo_sqlite, sqlite3, bcmath, dom, fileinfo
           coverage: none
 
@@ -80,8 +88,15 @@ jobs:
       - name: Prepare app key
         run: |
           cp .env.example .env
+          php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
           php artisan key:generate
 
       - name: Run smoke checkout flow
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+          CACHE_STORE: array
+          SESSION_DRIVER: array
+          QUEUE_CONNECTION: sync
         run: php artisan test --filter=Smoke --no-ansi
-
