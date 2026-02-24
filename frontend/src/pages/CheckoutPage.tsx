@@ -11,6 +11,7 @@ import { getApiErrorDetail, getApiErrorMessage, getApiValidationDetails } from '
 const steps = ['Adresse', 'Paiement', 'Confirmation'];
 
 export default function CheckoutPage() {
+    const localOnlyMode = !import.meta.env.VITE_API_URL;
     const { user, isAuthenticated, isLoading } = useAuth();
     const { items, totalPrice, clearCart } = useCart();
     const navigate = useNavigate();
@@ -171,6 +172,12 @@ export default function CheckoutPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fade-in">
             <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-10 tracking-tight text-center">Paiement Sécurisé</h1>
 
+            {localOnlyMode && (
+                <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+                    Mode demo: aucune commande reelle n'est envoyee. Cette commande est simulee et stockee localement.
+                </div>
+            )}
+
             {renderStepper()}
 
             {error && (
@@ -189,7 +196,9 @@ export default function CheckoutPage() {
                     </div>
                     <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4">Commande confirmée !</h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-10 max-w-md mx-auto text-lg">
-                        Merci pour votre achat. Vous recevrez bientôt un email de confirmation avec les détails de votre commande.
+                        {localOnlyMode
+                            ? "Mode demo: commande simulee enregistree localement. Aucune commande reelle n'a ete envoyee."
+                            : "Merci pour votre achat. Vous recevrez bientot un email de confirmation avec les details de votre commande."}
                     </p>
                     <Link
                         to="/account"
@@ -297,7 +306,11 @@ export default function CheckoutPage() {
                                         >
                                             {isSubmitting ? 'Validation en cours...' : `Confirmer et Payer ${totalPrice.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`}
                                         </button>
-                                        <p className="text-center text-xs text-gray-500 mt-4">Paiement 100% sécurisé simulé. Aucune vraie transaction n'est effectuée.</p>
+                                        <p className="text-center text-xs text-gray-500 mt-4">
+                                            {localOnlyMode
+                                                ? "Mode demo: paiement simule. Aucune transaction reelle n'est effectuee."
+                                                : "Paiement 100% securise simule. Aucune vraie transaction n'est effectuee."}
+                                        </p>
                                     </div>
                                 </form>
                             )}

@@ -8,6 +8,7 @@ import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { ADMIN_ROUTE_PREFIX } from '../constants/routes';
 
 export default function AccountPage() {
+    const localOnlyMode = !import.meta.env.VITE_API_URL;
     const { user, isAuthenticated, isLoading, logout, downloadInvoice } = useAuth();
     const navigate = useNavigate();
     const [orders, setOrders] = useState<Order[]>([]);
@@ -109,6 +110,11 @@ export default function AccountPage() {
             {/* Historique des commandes */}
             <div className="mt-12">
                 <h3 className="text-lg font-semibold leading-6 text-gray-900 dark:text-white mb-4">Historique de vos commandes</h3>
+                {localOnlyMode && (
+                    <p className="mb-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
+                        Mode demo: commandes chargees depuis localStorage. Aucune commande reelle n'est transmise au serveur.
+                    </p>
+                )}
                 {ordersLoading ? (
                     <div className="space-y-4">
                         <OrderItemSkeleton />
@@ -157,16 +163,17 @@ export default function AccountPage() {
                                         </div>
 
                                         {/* Download Invoice Button */}
-                                        <div className="mt-3 flex gap-2">
-                                            <button
-                                                onClick={() => downloadInvoice(order.id).catch(() => undefined)}
-                                                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-                                            >
-                                                <ArrowDownTrayIcon className="h-4 w-4" />
-                                                Télécharger la facture
-                                            </button>
-                                        </div>
-
+                                        {!localOnlyMode && (
+                                            <div className="mt-3 flex gap-2">
+                                                <button
+                                                    onClick={() => downloadInvoice(order.id).catch(() => undefined)}
+                                                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                                                >
+                                                    <ArrowDownTrayIcon className="h-4 w-4" />
+                                                    Télécharger la facture
+                                                </button>
+                                            </div>
+                                        )}
                                         {order.items && order.items.length > 0 && (
                                             <div className="mt-4 border-t border-gray-100 dark:border-gray-700/50 pt-4">
                                                 <ul className="space-y-3">
