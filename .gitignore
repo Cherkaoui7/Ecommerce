@@ -1,0 +1,51 @@
+# -------------------------
+# OS / Editor
+# -------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.swp
+*.sw?
+
+# -------------------------
+# Environment / Secrets
+# -------------------------
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+*.key
+
+# -------------------------
+# Dependencies
+# -------------------------
+node_modules/
+vendor/
+frontend/node_modules/
+backend/vendor/
+
+# -------------------------
+# Build / Runtime Artifacts
+# -------------------------
+dist/
+frontend/dist/
+frontend/dist-ssr/
+backend/public/build/
+backend/public/hot
+backend/public/storage
+backend/bootstrap/cache/*.php
+
+# -------------------------
+# Logs / Local Data
+# -------------------------
+*.log
+backend/storage/pail/
+backend/database/*.sqlite
+backend/database/*.sqlite-*
