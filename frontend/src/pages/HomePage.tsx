@@ -36,21 +36,21 @@ export default function HomePage() {
     const features = [
         {
             name: 'Livraison Rapide & Gratuite',
-            description: 'Offerte dÃ¨s 50â‚¬ d\'achat. ExpÃ©dition en 24h.',
+            description: 'Offerte des 50 EUR d\'achat. Expedition en 24h.',
             icon: TruckIcon,
         },
         {
-            name: 'Paiement 100% SÃ©curisÃ©',
-            description: 'Chiffrage SSL et protection des donnÃ©es garantie.',
+            name: 'Paiement 100% Securise',
+            description: 'Chiffrage SSL et protection des donnees garantie.',
             icon: ShieldCheckIcon,
         },
         {
-            name: 'Satisfait ou RemboursÃ©',
+            name: 'Satisfait ou Rembourse',
             description: '30 jours pour retourner vos articles gratuitement.',
             icon: ArrowPathIcon,
         },
         {
-            name: 'QualitÃ© CertifiÃ©e',
+            name: 'Qualite Certifiee',
             description: 'Des produits authentiques et durables.',
             icon: SparklesIcon,
         },
@@ -59,21 +59,21 @@ export default function HomePage() {
     const testimonials = [
         {
             id: 1,
-            content: "J'ai Ã©tÃ© bluffÃ©e par la qualitÃ© du cuir du sac que j'ai commandÃ©. C'est exactement comme sur les photos, voire mieux. La livraison Ã©tait super rapide !",
+            content: "J'ai ete bluffee par la qualite du cuir du sac que j'ai commande. C'est exactement comme sur les photos, voire mieux. La livraison etait super rapide.",
             author: "Camille V.",
             role: "Fashion Addict",
             image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         },
         {
             id: 2,
-            content: "Enfin un site qui propose des produits tech avec un vrai souci du design. J'ai achetÃ© mes Ã©couteurs ici et je ne les quitte plus.",
+            content: "Enfin un site qui propose des produits tech avec un vrai souci du design. J'ai achete mes ecouteurs ici et je ne les quitte plus.",
             author: "Lucas M.",
-            role: "DÃ©veloppeur",
+            role: "Developpeur",
             image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         },
         {
             id: 3,
-            content: "Le service client est exceptionnel. J'avais une question sur une taille et ils m'ont rÃ©pondu dans l'heure. Une expÃ©rience client parfaite.",
+            content: "Le service client est exceptionnel. J'avais une question sur une taille et ils m'ont repondu dans l'heure. Une experience client parfaite.",
             author: "Sarah B.",
             role: "Architecte",
             image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -93,19 +93,19 @@ export default function HomePage() {
                     <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2 lg:items-center">
                         <div className="text-center lg:text-left">
                             <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl dark:text-white leading-[1.1]">
-                                Ã‰levez Votre <br />
+                                Elevez Votre <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400">Style & Quotidien.</span>
                             </h1>
                             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                                Une sÃ©lection mÃ©ticuleuse de produits qui allient esthÃ©tique intemporelle et fonctionnalitÃ© moderne.
-                                RedÃ©couvrez le plaisir de l'excellence.
+                                Une selection meticuleuse de produits qui allient esthetique intemporelle et fonctionnalite moderne.
+                                Redecouvrez le plaisir de l'excellence.
                             </p>
                             <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
                                 <Link to="/shop" className="rounded-full bg-primary-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-primary-500 hover:shadow-primary-500/30 transform hover:-translate-y-1 transition-all duration-300">
-                                    DÃ©couvrir la Collection
+                                    Decouvrir la Collection
                                 </Link>
                                 <a href="#features" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white group flex items-center gap-2">
-                                    En savoir plus <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform">â†’</span>
+                                    En savoir plus <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                                 </a>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
                 <div className="mx-auto max-w-2xl lg:text-center">
                     <h2 className="text-base font-semibold leading-7 text-primary-600 dark:text-primary-400 uppercase tracking-wider">Nos Engagements</h2>
                     <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                        L'expÃ©rience client avant tout
+                        L'experience client avant tout
                     </p>
                 </div>
                 <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -156,7 +156,7 @@ export default function HomePage() {
                 <div className="mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
                     <div>
                         <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight">Nos Univers</h2>
-                        <p className="mt-3 text-lg text-gray-500 dark:text-gray-400 max-w-2xl">Explorez nos collections curÃ©es avec passion.</p>
+                        <p className="mt-3 text-lg text-gray-500 dark:text-gray-400 max-w-2xl">Explorez nos collections curees avec passion.</p>
                     </div>
                 </div>
 
@@ -172,7 +172,7 @@ export default function HomePage() {
                         <div className="absolute inset-0 p-8 flex flex-col justify-end">
                             <span className="text-white/80 text-sm font-bold tracking-widest uppercase mb-2">Collection 2026</span>
                             <h3 className="text-4xl font-black text-white mb-2">Mode Urbaine</h3>
-                            <p className="text-gray-200 max-w-md hidden sm:block font-medium">L'Ã©lÃ©gance dÃ©contractÃ©e pour ceux qui bougent.</p>
+                            <p className="text-gray-200 max-w-md hidden sm:block font-medium">L'elegance decontractee pour ceux qui bougent.</p>
                             <span className="mt-6 inline-flex items-center space-x-2 text-white font-bold group-hover:text-primary-300 transition-colors">
                                 <span>Explorer</span>
                                 <span aria-hidden="true" className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -222,8 +222,8 @@ export default function HomePage() {
             <section className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mb-10 flex justify-between items-end">
                     <div>
-                        <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">DerniÃ¨res ArrivÃ©es</h2>
-                        <p className="mt-2 text-gray-500 dark:text-gray-400">Les nouveautÃ©s exclusives fraÃ®chement ajoutÃ©es au catalogue.</p>
+                        <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">Dernieres Arrivees</h2>
+                        <p className="mt-2 text-gray-500 dark:text-gray-400">Les nouveautes exclusives fraichement ajoutees au catalogue.</p>
                     </div>
                     <Link to="/shop" className="hidden sm:inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 font-bold hover:text-primary-700 dark:hover:text-primary-300 transition-colors group">
                         <span>Voir tout le catalogue</span>
@@ -257,7 +257,7 @@ export default function HomePage() {
             <section className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto max-w-xl text-center">
-                        <h2 className="text-lg font-semibold leading-8 tracking-tight text-primary-600 dark:text-primary-400">TÃ©moignages</h2>
+                        <h2 className="text-lg font-semibold leading-8 tracking-tight text-primary-600 dark:text-primary-400">Temoignages</h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
                             Ce que nos clients disent
                         </p>
@@ -293,9 +293,9 @@ export default function HomePage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
                         <div className="max-w-xl lg:max-w-lg">
-                            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Restez connectÃ©.</h2>
+                            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Restez connecte.</h2>
                             <p className="mt-4 text-lg leading-8 text-gray-300">
-                                Rejoignez notre communautÃ© et recevez -10% sur votre premiÃ¨re commande.
+                                Rejoignez notre communaute et recevez -10% sur votre premiere commande.
                             </p>
                             <div className="mt-6 flex max-w-md gap-x-4">
                                 <label htmlFor="email-address" className="sr-only">Adresse email</label>
@@ -308,14 +308,14 @@ export default function HomePage() {
                                 <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
                                     <ArrowPathIcon className="h-6 w-6 text-white" aria-hidden="true" />
                                 </div>
-                                <dt className="mt-4 font-semibold text-white">NouveautÃ©s en avant-premiÃ¨re</dt>
-                                <dd className="mt-2 leading-7 text-gray-400">Soyez les premiers informÃ©s de nos drops exclusifs.</dd>
+                                <dt className="mt-4 font-semibold text-white">Nouveautes en avant-premiere</dt>
+                                <dd className="mt-2 leading-7 text-gray-400">Soyez les premiers informes de nos drops exclusifs.</dd>
                             </div>
                             <div className="flex flex-col items-start">
                                 <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
                                     <ShieldCheckIcon className="h-6 w-6 text-white" aria-hidden="true" />
                                 </div>
-                                <dt className="mt-4 font-semibold text-white">ConfidentialitÃ© garantie</dt>
+                                <dt className="mt-4 font-semibold text-white">Confidentialite garantie</dt>
                                 <dd className="mt-2 leading-7 text-gray-400">Desinscription possible a tout moment. Zero spam.</dd>
                             </div>
                         </dl>
